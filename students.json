@@ -1,0 +1,20 @@
+{
+  "S001": {
+    "name": "ram",
+    "course": "Python",
+    "marks": 52,
+    "age": 19
+  },
+  "S002": {
+    "name": "sita",
+    "course": "Data Science",
+    "marks": 98,
+    "age": 17
+  },
+  "S003": {
+    "name": "gaurab",
+    "course": "Python",
+    "marks": 47,
+    "age": 20
+  }
+}
