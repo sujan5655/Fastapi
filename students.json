@@ -16,5 +16,11 @@
     "course": "Python",
     "marks": 47,
     "age": 20
+  },
+  "S004": {
+    "name": "rishab chauhan",
+    "course": "Django",
+    "marks": 84,
+    "age": 25
   }
 }

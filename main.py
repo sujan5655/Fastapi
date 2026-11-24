@@ -65,11 +65,38 @@ def sort_students(
    for student_id,info in data.items():
       info["id"]=student_id
       student.append(info)
-
   #  Step-2 Sort the list by the choosen field
    reverse=(order=="desc")
    sorted_students=sorted(student,key=lambda s: s[sort_by],reverse=reverse)
-
    return sorted_students
+
+"""
+Pagination\
+http://127.0.0.1:8000/paginate?page=1&limit=2
+
+page-> which page you want t
+limit->how many students(records) on one page
+
+Formula
+start=(page-1)*limit
+end=start+limit
+"""
+@app.get("/paginate")
+def paginate_student(page:int=Query(1,ge=1,description="Which page you want(start from 1)"),limit:int=Query(2,ge=1,le=100,description="how many students on one page (1 to 100)")):
+   data=load_data()
+   # Turn the dictionary into a list,putting the ID inside each student
+   student=[]
+   for student_id,info in data.items():
+      info['id']=student_id
+      student.append(info)
+   start=(page-1)*limit
+   end=start+limit
+   page_student=student[start:end]
+   total_students=len(student)
+   return {
+      "page":page,
+      "limit":limit,
+      "total_students":total_students,
+      "students":page_student
+   }
    
-  
